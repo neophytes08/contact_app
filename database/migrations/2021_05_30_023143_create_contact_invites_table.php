@@ -18,9 +18,13 @@ class CreateContactInvitesTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('email');
             $table->integer('status')->default(0);
+            $table->integer('direct_invite')->default(0);
+            $table->unsignedBigInteger('contact_id')->nullable();
+            $table->text('invite_link')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('contact_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

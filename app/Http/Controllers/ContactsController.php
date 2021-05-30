@@ -72,12 +72,14 @@ class ContactsController extends Controller
             return response()->json(['status' => true, 'message' => 'Already sent an invitation']);
         }
 
-        $contactList = ContactLists::where('user_id', $user->id)
+        if($inviteUser) {
+            $contactList = ContactLists::where('user_id', $user->id)
                                 ->where('contact_id', $inviteUser->id)
                                 ->first();
         
-        if($contactList) {
-            return response()->json(['status' => true, 'message' => 'Contact already added']);
+            if($contactList) {
+                return response()->json(['status' => true, 'message' => 'Contact already added']);
+            }
         }
 
         if($inviteUser) {
