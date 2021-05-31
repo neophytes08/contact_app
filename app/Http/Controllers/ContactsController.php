@@ -15,6 +15,7 @@ use App\Mail\InviteContact;
 use App\Models\ContactLists;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\SendUserNotification;
+use App\Notifications\InviteContacts;
 
 class ContactsController extends Controller
 {
@@ -99,7 +100,7 @@ class ContactsController extends Controller
             // send notification
             $contactInvite->name = $user->name;
             Notification::send($inviteUser, new SendUserNotification($contactInvite));
-            return response()->json(['status' => true, 'message' => 'Sent invitation for contact']);
+            return response()->json(['status' => true, 'message' => "Sent invitation for contact. Invite will be on the user's notification page."]);
         }
 
         
@@ -112,10 +113,14 @@ class ContactsController extends Controller
 
 
         $contact = ContactInvite::create($data);
-        $user->url = $url = route('register')."?invite_link=".$data['invite_link'];
+        $data['url'] = $url = route('register')."?invite_link=".$data['invite_link'];
+        $data['name'] = $user->name;
+        $user->email = $data['email'];
+        // $user->email = $data['email'];
 
-        Mail::to($request->input('email'))->send(new InviteContact($user));
-        return response()->json(['status' => true, 'message' => 'Sent invitation for contact']);
+        // Mail::to($request->input('email'))->send(new InviteContact($user));
+        Notification::send($user, new InviteContacts($data));
+        return response()->json(['status' => true, 'message' => 'Sent invitation via email for contact']);
     }
 
     /**
