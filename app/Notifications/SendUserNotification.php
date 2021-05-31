@@ -64,4 +64,9 @@ class SendUserNotification extends Notification
             'direct_invite'     => $this->invite->direct_invite,
         ];
     }
+
+    public function toBroadcast($notifiable)
+    {
+        return [];
+    }
 }

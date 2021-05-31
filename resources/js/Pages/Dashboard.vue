@@ -22,8 +22,9 @@
                         
                     </div>
 
-                    <div class="grid grid-cols-3 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
-                        <div v-for="list in contacts" class="max-w-md py-4 px-8 bg-white shadow-lg rounded-lg my-20 mx-10 md:mx-20 lg:mx-10">
+                    <!-- <div class="grid grid-cols-3 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1"> -->
+                    <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2">
+                        <div v-for="list in contacts" class="max-w-md py-4 px-8 bg-white shadow-lg rounded-lg mt-20 mx-20 md:mx-5 lg:mx-5">
                             <div class="flex justify-center md:justify-end -mt-16">
                                 <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500" :src="list.user.photo" :alt="list.photo">
                             </div>

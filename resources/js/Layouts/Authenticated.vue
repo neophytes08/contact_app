@@ -46,6 +46,9 @@
                                     </template>
 
                                     <template #content>
+                                        <breeze-dropdown-link :href="route('profile.index')" as="button">
+                                            Profile
+                                        </breeze-dropdown-link>
                                         <breeze-dropdown-link :href="route('logout')" method="post" as="button">
                                             Log Out
                                         </breeze-dropdown-link>
@@ -71,6 +74,12 @@
                     <div class="pt-2 pb-3 space-y-1">
                         <breeze-responsive-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                             Dashboard
+                        </breeze-responsive-nav-link>
+                        <breeze-responsive-nav-link :href="route('contacts.index')" :active="route().current('contacts.index')">
+                            Create Contacts
+                        </breeze-responsive-nav-link>
+                        <breeze-responsive-nav-link :href="route('notifications.index')" :active="route().current('notifications.index')">
+                            Notifications ({{ $page.props.unreadNotificationsCount }})
                         </breeze-responsive-nav-link>
                     </div>
 

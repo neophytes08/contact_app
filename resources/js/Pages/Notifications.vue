@@ -19,16 +19,24 @@
                         </div>
                         <div>
                             <div class="flex justify-between" v-if="list.data.status == 0">
-                                <button @click="changeContactStatus(list, 1)" type="button" class="border border-green-500 bg-green-500 text-white rounded-md px-2 py-2 m-2 transition duration-500 ease select-none hover:bg-green-600 focus:outline-none focus:shadow-outline">
+                                <button 
+                                    @click="changeContactStatus(list, 1)" 
+                                    type="button" 
+                                    class="border border-green-500 bg-green-500 text-white rounded-md px-2 py-2 m-2 transition duration-500 ease select-none hover:bg-green-600 focus:outline-none focus:shadow-outline"
+                                >
                                     Accept
                                 </button>
-                                <button type="button" class="border border-red-500 bg-red-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-600 focus:outline-none focus:shadow-outline"
+                                <button 
+                                    @click="changeContactStatus(list, 2)"
+                                    type="button" 
+                                    class="border border-red-500 bg-red-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-600 focus:outline-none focus:shadow-outline"
                                 >
                                     Cancel
                                 </button>
                             </div>
                             <div class="flex justify-between" v-if="list.data.status == 1">
                                 <button
+                                    disabled
                                     type="button"
                                     class="border border-gray-200 bg-gray-200 text-gray-700 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-gray-300 focus:outline-none focus:shadow-outline"
                                 >

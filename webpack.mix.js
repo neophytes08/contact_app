@@ -19,7 +19,7 @@ mix.js('resources/js/app.js', 'public/js')
         require('autoprefixer'),
     ])
     .webpackConfig(require('./webpack.config'))
-    // .browserSync('http://contacts.local')
+    .browserSync('http://contacts.local')
     .version();
 
 if (mix.inProduction()) {

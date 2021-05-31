@@ -6,6 +6,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NotificationsController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,4 +35,7 @@ Route::resource('contacts', ContactsController::class)->middleware('auth');
 // notifications controller
 Route::resource('notifications', NotificationsController::class)->middleware('auth');
 Route::post('update_status', [NotificationsController::class, 'updateStatus'])->middleware('auth')->name('notifications.update_status');
+
+// profile controller
+Route::resource('profile', ProfileController::class)->middleware('auth');
 require __DIR__.'/auth.php';
